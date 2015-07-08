@@ -54,6 +54,8 @@ for [depth 1 thing "maxdepth] [
 	; Prepare for next iteration
 	make "size :size / 2
 	invoke "logpos word "new_size :size
+	right 180
+	fd :size
 ]
 
 hideturtle
