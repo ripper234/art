@@ -2,6 +2,8 @@
 ; Author: Ron Gross <chiefninjaofficer@gmail.com>
 ;------------------------------------------------
 ;
+; https://github.com/ripper234/art/blob/master/Fractional_DFS.logo
+;
 ; The Fraction Fractal is a new fractal that is built upon the Natrual Fractals (1/2, 1/3, 1/4, ...)
 ; This is the DFS version as we do a "depth-first search" instead of expanding on all branches.
 
