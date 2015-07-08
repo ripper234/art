@@ -21,6 +21,7 @@ invoke "log ["Logging setup successfully]
 
 ; We do DFS, so the main loop is depth
 for [depth 1 thing "maxdepth] [
+	invoke "log word "depth_ :depth
 	; Setup
 	fd thing "size
 	right 180
@@ -29,8 +30,11 @@ for [depth 1 thing "maxdepth] [
 	
 	; Width loop
 	for [width 1 thing "maxwidth] [
+		invoke "log word "width_ :width
+		
 		; Find the angle
 		localmake "angle 360 / thing "maxwidth
+		invoke "log :angle
 		right thing "angle
 		
 		; There and back
