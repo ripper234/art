@@ -17,10 +17,11 @@ make "debug TRUE
 to log :text
 	if thing "debug [ print :text]
 end
-to logposition
-	invoke "log pos
+to logpos :text
+	if thing "debug [ print pos]
+	if thing "debug [ print :text]
 end
-invoke "log ["Logging setup successfully]
+invoke "logpos ["Logging setup successfully]
 
 ; We do DFS, so the main loop is depth
 for [depth 1 thing "maxdepth] [
