@@ -28,9 +28,7 @@ for [depth 1 thing "maxdepth] [
 	invoke "log word "depth_ :depth
 	; Setup
 	fd thing "size
-	right 180
-	fd thing "size
-	right 180
+	bk thing "size
 		
 	; Width loop, we iterate over 1/2, 1/3, 1/4...
 	for [width 2 thing "maxwidth] [
@@ -43,9 +41,7 @@ for [depth 1 thing "maxdepth] [
 		
 		; There and back
 		fd thing "size
-		right 180
-		fd thing "size
-		right 180
+		bk thing "size
 		
 		; Undo angle
 		left thing "angle
