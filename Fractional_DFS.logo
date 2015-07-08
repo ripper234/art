@@ -15,11 +15,17 @@
 ; Clear screen & consts
 cs
 ct
-make "size 300
-make "maxdepth 10
-make "maxwidth 40       ; if this is 4 we'll do 1/2, 1/3, 1/4
-make "debug FALSE
+make "debug TRUE
 
+ifelse thing "debug [
+	make "size 150
+	make "maxdepth 10
+	make "maxwidth 20       ; if this is 4 we'll do 1/2, 1/3, 1/4
+] [
+	make "size 300
+	make "maxdepth 10
+	make "maxwidth 40       ; if this is 4 we'll do 1/2, 1/3, 1/4
+]
 ; Define logging
 to log :text
 	if thing "debug [ print :text]
