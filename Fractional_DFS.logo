@@ -9,12 +9,18 @@
 cs
 ct
 make "size 100
-make "maxdepth 4
-make "maxwidth 5
+make "maxdepth 3
+make "maxwidth 3
+make "debug TRUE
+
+; Define logging
+to log :text
+	if thing "debug [ print :text]
+end
+invoke "log ["Logging setup successfully]
 
 ; We do DFS, so the main loop is depth
-for [depth 1 thing "maxdepth]
-[
+for [depth 1 thing "maxdepth] [
 	; Setup
 	fd thing "size
 	right 180
@@ -22,8 +28,7 @@ for [depth 1 thing "maxdepth]
 	right 180
 	
 	; Width loop
-	for [width 1 thing "maxwidth]
-	[
+	for [width 1 thing "maxwidth] [
 		; Find the angle
 		localmake "angle 360 / thing "maxwidth
 		right thing "angle
