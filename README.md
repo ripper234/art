@@ -1,1 +1,1 @@
-# art
+# Collection of fractals I create.
