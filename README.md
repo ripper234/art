@@ -1,1 +1,1 @@
-# Collection of fractals I create.
+# Collection of Fractals
