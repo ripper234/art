@@ -19,12 +19,22 @@ for [depth 1 thing "maxdepth]
 	fd thing "size
 	right 180
 	fd thing "size
+	right 180
 	
 	; Width loop
 	for [width 1 thing "maxwidth]
 	[
+		; Find the angle
+		localmake "angle 360 / thing "maxwidth
+		right thing "angle
+		
+		; There and back
+		fd thing "size
+		right 180
 		fd thing "size
 		
+		; Undo angle
+		left thing "angle
 	]
 ]
 
