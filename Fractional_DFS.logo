@@ -35,22 +35,22 @@ to logpos :text
 	if :debug [ print pos]
 	if :debug [ print :text]
 end
-invoke "logpos ["Logging setup successfully]
+logpos ["Logging setup successfully]
 
 ; We do DFS, so the main loop is depth
 for [depth 1 :maxdepth] [
-	invoke "log word "depth_ :depth
+	log word "depth_ :depth
 	; Setup
 	fd :size
 	bk :size
 		
 	; Width loop, we iterate over 1/2, 1/3, 1/4...
 	for [width :minwidth :maxwidth] [
-		invoke "logpos word "width_ :width
+		logpos word "width_ :width
 		
 		; Find the angle
 		localmake "angle 360 / :width
-		invoke "log :angle
+		log :angle
 		right :angle
 		
 		; There and back
