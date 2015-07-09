@@ -15,7 +15,7 @@
 cs
 ct
 
-make "debug TRUE
+make "debug FALSE
 
 make "minwidth 4  ; start with 1/4
 ifelse :debug [
@@ -25,7 +25,7 @@ ifelse :debug [
 ] [
 	make "size 300
 	make "maxdepth 10
-	make "maxwidth 40       ; if this is 4 we'll do 1/2, 1/3, 1/4
+	make "maxwidth 200       ; if this is 4 we'll do 1/2, 1/3, 1/4
 ]
 
 ; ------ Loggin
