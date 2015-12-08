@@ -13,13 +13,33 @@
 cs
 ct
 
-make "depth 8
-make "angle0 60   ;60, 72
-make "angle1 0
-make "step0 0
-make "step1 1
-
 make "debug FALSE
+
+# Change this to 0, 1, 2,... to view different Thue-More fractals
+make "fractal 0
+
+ifelse :fractal = 0 [ ; http://i.imgur.com/QfsSxvv.png
+  make "depth 8
+  make "angle0 60
+  make "angle1 0
+  make "step0 0
+  make "step1 1
+] [
+  ifelse :fractal = 1 [ ; http://i.imgur.com/qMm6Z9f.png
+    make "depth 8
+    make "angle0 120
+    make "angle1 60
+    make "step0 1
+    make "step1 1
+  ] [ ; http://i.imgur.com/XWGwR1F.png
+    make "depth 6
+    make "angle0 72
+    make "angle1 0
+    make "step0 0
+    make "step1 10    
+  ]
+]
+
 
 ; ------ Loggin
 to log :text
