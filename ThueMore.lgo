@@ -7,7 +7,8 @@
 ; This fractal is built on the Thue-Morse integer sequence (0110100110010110...). The usual fractal interperts 0 as "move forward" and 1 as "rotate colckwise by π/3".
 ;
 ; https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence#Fractals_and_Turtle_graphics
-
+;
+;  http://imgur.com/a/lOTAf
 
 ; Clear screen & consts
 cs
