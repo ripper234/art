@@ -14,7 +14,7 @@
 cs
 ct
 
-make "debug TRUE
+make "debug FALSE
 
 ; ------ Loggin
 to log :text
@@ -31,7 +31,7 @@ logpos ["Logging setup successfully]
 ; Interpertation of 0 and 1
 to do0
   log "do0"
-  fd 10
+  fd 1
 end
 
 to do1
@@ -44,10 +44,17 @@ end
 ; Thue-More sequence
 to thuemore :n :phase
   IFELSE :n <= 1 [
-    do0
-    do1
-    do1
-    do0
+    IFELSE :phase = 0 [
+        do0
+    	do1
+        do1
+        do0
+    ] [
+        do1
+        do0
+        do0
+        do1
+    ]
   ] [
     thuemore (:n - 1) :phase
     thuemore (:n - 1) (1 - :phase)
@@ -57,6 +64,6 @@ to thuemore :n :phase
   
 end
 
-thuemore 2 0
+thuemore 8 0
 
 hideturtle
