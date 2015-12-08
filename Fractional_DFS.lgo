@@ -1,20 +1,32 @@
-; Thue-Morse Fractal
+; Dedicated to my dad, who taught me Logo when I was a kid, and taught me the love of programming and math.
+;
+; http://imgur.com/fOSmSED
+;
+; The Fractional Fractal (DFS version)
 ; Author: Ron Gross <chiefninjaofficer@gmail.com>
 ;------------------------------------------------
 ;
 ; Quickrun: http://www.calormen.com/jslogo/#
 ; 
-; This fractal is built on the Thue-Morse integer sequence (0110100110010110...). The usual fractal interperts 0 as "move forward" and 1 as "rotate colckwise by π/3".
-;
-; https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence#Fractals_and_Turtle_graphics
-
+; The Fraction Fractal is a new fractal that is built upon the Natrual Fractals (1/2, 1/3, 1/4, ...)
+; This is the DFS version as we do a "depth-first search" instead of expanding on all branches.
 
 ; Clear screen & consts
-
 cs
 ct
 
 make "debug FALSE
+
+make "minwidth 4  ; start with 1/4
+ifelse :debug [
+	make "size 150
+	make "maxdepth 5
+	make "maxwidth 20       ; if this is 4 we'll do 1/2, 1/3, 1/4
+] [
+	make "size 300
+	make "maxdepth 10
+	make "maxwidth 200       ; if this is 4 we'll do 1/2, 1/3, 1/4
+]
 
 ; ------ Loggin
 to log :text
@@ -27,43 +39,54 @@ end
 logpos ["Logging setup successfully]
 
 
-
-; Interpertation of 0 and 1
-to do0
-  log "do0"
-  fd 1
-end
-
-to do1
-  log "do1"
-  right 60
-end
-
-
-
-; Thue-More sequence
-to thuemore :n :phase
-  IFELSE :n <= 1 [
-    IFELSE :phase = 0 [
-        do0
-    	do1
-        do1
-        do0
-    ] [
-        do1
-        do0
-        do0
-        do1
-    ]
-  ] [
-    thuemore (:n - 1) :phase
-    thuemore (:n - 1) (1 - :phase)
-    thuemore (:n - 1) (1 - :phase)
-    thuemore (:n - 1) :phase
-  ]
+; ---- Set Pen Opacity
+to setpenopacity :opacity
+  localmake "transparency 1 - :opacity
+  localmake "c 100 * :transparency
   
-end
+  localmake "color arraytolist {}
+  localmake "color fput :c :color
+  localmake "color fput :c :color
+  localmake "color fput :c :color
+  setpencolor :color
+END
 
-thuemore 8 0
+; -----------------
+; Main
+
+; We do DFS, so the main loop is depth
+for [depth 1 :maxdepth] [
+	log word "depth_ :depth
+	; Setup
+	setpenopacity 1
+	fd :size
+	bk :size
+		
+	; Width loop, we iterate over 1/2, 1/3, 1/4...
+	for [width :minwidth :maxwidth] [
+		logpos word "width_ :width
+		
+		; Find the angle
+		localmake "angle 360 / :width
+		log :angle
+		right :angle
+		
+		; Opacity
+		setpenopacity (1 / :width * :minwidth)
+		
+		; There and back
+		fd :size
+		bk :size
+		
+		; Undo angle
+		left :angle
+	]
+	
+	; Prepare for next iteration
+	make "size :size / 2
+	invoke "logpos word "new_size :size
+	right 180
+	fd :size
+]
 
 hideturtle
