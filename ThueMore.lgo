@@ -14,8 +14,11 @@ cs
 ct
 
 make "depth 8
-make "angel 60
-make "size 1
+make "angle0 60   ;60, 72
+make "angle1 0
+make "step0 0
+make "step1 1
+
 make "debug FALSE
 
 ; ------ Loggin
@@ -33,12 +36,14 @@ logpos ["Logging setup successfully]
 ; Interpertation of 0 and 1
 to do0
   log "do0"
-  fd :size
+  fd :step0
+  left :angle0
 end
 
 to do1
   log "do1"
-  right :angel
+  fd :step1
+  right :angle1
 end
 
 
