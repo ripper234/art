@@ -10,10 +10,12 @@
 
 
 ; Clear screen & consts
-
 cs
 ct
 
+make "depth 8
+make "angel 60
+make "size 1
 make "debug FALSE
 
 ; ------ Loggin
@@ -31,12 +33,12 @@ logpos ["Logging setup successfully]
 ; Interpertation of 0 and 1
 to do0
   log "do0"
-  fd 1
+  fd :size
 end
 
 to do1
   log "do1"
-  right 60
+  right :angel
 end
 
 
@@ -64,6 +66,6 @@ to thuemore :n :phase
   
 end
 
-thuemore 8 0
+thuemore :depth 0
 
 hideturtle
