@@ -1,0 +1,42 @@
+; Thue-Morse Fractal
+; Author: Ron Gross <chiefninjaofficer@gmail.com>
+;------------------------------------------------
+;
+; Quickrun: http://www.calormen.com/jslogo/#
+; 
+; This fractal is built on the Thue-Morse integer sequence (0110100110010110...). The usual fractal interperts 0 as "move forward" and 1 as "rotate colckwise by π/3".
+;
+; https://en.wikipedia.org/wiki/Thue%E2%80%93Morse_sequence#Fractals_and_Turtle_graphics
+
+
+; Clear screen & consts
+
+cs
+ct
+
+to do0
+  fd 10
+end
+
+to do1
+  right 60
+end
+
+to thuemore :n :phase
+  IFELSE :n <= 1 [
+    do0
+    do1
+    do1
+    do0
+  ] [
+    thuemore (:n - 1) :phase
+    thuemore (:n - 1) (1 - :phase)
+    thuemore (:n - 1) (1 - :phase)
+    thuemore (:n - 1) :phase
+  ]
+  
+end
+
+thuemore 3 0
+
+hideturtle
